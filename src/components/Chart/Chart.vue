@@ -14,7 +14,7 @@
       :style="{
         ...root.style['chart-calendar-container'],
         height: root.state.options.calendar.height + 'px',
-        'margin-bottom': root.state.options.calendar.gap + 'px'
+        'margin-bottom': root.state.options.calendar.gap + 'px',
       }"
     >
       <calendar></calendar>
@@ -24,14 +24,14 @@
       ref="chartGraphContainer"
       :style="{
         ...root.style['chart-graph-container'],
-        height: root.state.options.height - root.state.options.calendar.height + 'px'
+        height: root.state.options.height - root.state.options.calendar.height + 'px',
       }"
     >
       <div
         :style="{
           ...root.style['chart-area'],
           width: root.state.options.width + 'px',
-          height: root.state.options.rowsHeight + 'px'
+          height: root.state.options.rowsHeight + 'px',
         }"
       >
         <div
@@ -76,6 +76,7 @@ import DependencyLines from './DependencyLines.vue';
 import Task from './Row/Task.vue';
 import Milestone from './Row/Milestone.vue';
 import Project from './Row/Project.vue';
+import Group from './Row/Group.vue';
 export default {
   name: 'Chart',
   components: {
@@ -85,12 +86,13 @@ export default {
     Task,
     Milestone,
     Project,
-    DaysHighlight
+    Group,
+    DaysHighlight,
   },
   inject: ['root'],
   data() {
     return {
-      moving: false
+      moving: false,
     };
   },
   /**
@@ -112,7 +114,7 @@ export default {
      */
     getViewBox() {
       return `0 0 ${this.root.state.options.width} ${this.root.state.options.allVisibleTasksHeight}`;
-    }
-  }
+    },
+  },
 };
 </script>
